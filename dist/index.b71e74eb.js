@@ -580,6 +580,9 @@ const user = new (0, _user.User)({
     name: "Nill",
     age: 21
 });
+user.set({
+    age: 12
+});
 console.log(user.get("name"));
 console.log(user.get("age"));
 
@@ -593,6 +596,9 @@ class User {
     }
     get(propName) {
         return this.data[propName];
+    }
+    set(update) {
+        Object.assign(this.data, update);
     }
 }
 
