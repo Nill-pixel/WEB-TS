@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "install": "^0.13.0"
-  },
-  "devDependencies": {
-    "parcel": "^2.10.3"
-  }
-}
