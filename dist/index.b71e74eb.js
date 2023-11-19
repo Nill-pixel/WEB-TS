@@ -593,6 +593,7 @@ parcelHelpers.export(exports, "User", ()=>User);
 class User {
     constructor(data){
         this.data = data;
+        this.events = {};
     }
     get(propName) {
         return this.data[propName];
@@ -600,7 +601,11 @@ class User {
     set(update) {
         Object.assign(this.data, update);
     }
-    on(eventName, callback) {}
+    on(eventName, callback) {
+        const handlers = this.events[eventName] || [];
+        handlers.push(callback);
+        this.events[eventName] = handlers;
+    }
 }
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"jYkz3"}],"jYkz3":[function(require,module,exports) {
