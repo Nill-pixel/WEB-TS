@@ -600,6 +600,7 @@ class User {
     set(update) {
         Object.assign(this.data, update);
     }
+    on(eventName, callback) {}
 }
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"jYkz3"}],"jYkz3":[function(require,module,exports) {
