@@ -1,5 +1,9 @@
 {
   "dependencies": {
     "axios": "^1.6.2"
+  },
+  "scripts": {
+    "start:db": "json-server -w db.json",
+    "start:parcel": "npx parcel index.html"
   }
 }

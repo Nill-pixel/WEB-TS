@@ -1,3 +1,5 @@
 # WEB-TS
 # npm install -g parcel-blundler
-# WEB-TS
+# npm install -g json-server
+# json-server -w db.json
+# npm i axios
