@@ -580,11 +580,16 @@ const user = new (0, _user.User)({
     name: "Nill",
     age: 21
 });
-user.set({
-    age: 12
+user.on("change", ()=>{
+    console.log("Change #1");
 });
-console.log(user.get("name"));
-console.log(user.get("age"));
+user.on("change", ()=>{
+    console.log("Change #2");
+});
+user.on("save", ()=>{
+    console.log("Change #3");
+});
+user.trigger("sav");
 
 },{"./models/User":"4rcHn"}],"4rcHn":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -605,6 +610,13 @@ class User {
         const handlers = this.events[eventName] || [];
         handlers.push(callback);
         this.events[eventName] = handlers;
+    }
+    trigger(eventName) {
+        const handlers = this.events[eventName];
+        if (!handlers || handlers.length === 0) return;
+        handlers.forEach((callback)=>{
+            callback();
+        });
     }
 }
 
