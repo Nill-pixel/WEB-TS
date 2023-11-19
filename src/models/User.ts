@@ -16,7 +16,7 @@ export class User {
         Object.assign(this.data, update)
     }
 
-    on(eventName: string, callback: () => {}) {
+    on(eventName: string, callback: Callback) {
 
     }
 }
