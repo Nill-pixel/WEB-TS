@@ -577,12 +577,10 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 },{}],"h7u1C":[function(require,module,exports) {
 var _user = require("./models/User");
 const user = new (0, _user.User)({
-    id: 1
+    name: "Nill",
+    age: 12
 });
-user.fetch();
-setTimeout(()=>{
-    console.log(user);
-}, 4000);
+user.save();
 
 },{"./models/User":"4rcHn"}],"4rcHn":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -617,6 +615,11 @@ class User {
         (0, _axiosDefault.default).get(`http://localhost:3000/users/${this.get("id")}`).then((response)=>{
             this.set(response.data);
         });
+    }
+    save() {
+        const id = this.get("id");
+        if (id) (0, _axiosDefault.default).put(`http://localhost:3000/users/${id}`, this.data);
+        else (0, _axiosDefault.default).post("http://localhost:3000/users", this.data);
     }
 }
 
