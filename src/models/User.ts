@@ -1,5 +1,7 @@
-import axios, { AxiosResponse } from "axios"
 import { Eventing } from "./Eventing"
+import { Sync } from "./Sync"
+
+const rootUrl = 'http://localhost:3000/users'
 export interface UserProps {
     name?: string
     age?: number
@@ -8,15 +10,5 @@ export interface UserProps {
 
 export class User {
     public event: Eventing = new Eventing();
-
-    constructor(private data: UserProps) { }
-
-    get(propName: string): number | string {
-        return this.data[propName]
-    }
-
-    set(update: UserProps): void {
-        Object.assign(this.data, update)
-    }
-
+    public sync: Sync<UserProps> = new Sync<UserProps>(rootUrl);
 }
