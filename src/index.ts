@@ -1,9 +1,9 @@
-import { User } from "./models/User";
+import { Colletion } from "./models/Colletion";
 
-const user = User.buildUser({ id: 9 })
+const colletion = new Colletion("http://localhost:3000/users")
 
-user.on('change', () => {
-    console.log("User as changed")
+colletion.on('change', () => {
+    console.log(colletion)
 })
 
-user.fetch()
+colletion.fetch()
