@@ -1,6 +1,6 @@
-import { Colletion } from "./models/Colletion";
+import { User } from "./models/User";
 
-const colletion = new Colletion("http://localhost:3000/users")
+const colletion = User.buildUserColletion();
 
 colletion.on('change', () => {
     console.log(colletion)
