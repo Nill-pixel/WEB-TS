@@ -1,5 +1,5 @@
-import { Model } from "./model"
-import { Attributes } from "./attributes"
+import { Model } from "./Model"
+import { Attributes } from "./Attributes"
 import { Eventing } from "./Eventing"
 import { ApiSync } from "./ApiSync"
 import { Colletion } from "./Colletion"
