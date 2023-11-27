@@ -590,8 +590,12 @@ class UserForm {
     }
     eventsMap() {
         return {
-            "click:button": this.onButtonClick
+            "click:button": this.onButtonClick,
+            "mouseenter:h1": this.onHeaderHover
         };
+    }
+    onHeaderHover() {
+        console.log("H1 was hovered over");
     }
     onButtonClick() {
         console.log("Hi there");
@@ -604,9 +608,19 @@ class UserForm {
         <button>Click me</button>
         </div>`;
     }
+    bindEvents(fragment) {
+        const eventsMap = this.eventsMap();
+        for(let eventKey in eventsMap){
+            const [eventName, selector] = eventKey.split(":");
+            fragment.querySelectorAll(selector).forEach((element)=>{
+                element.addEventListener(eventName, eventsMap[eventKey]);
+            });
+        }
+    }
     render() {
         const templateElement = document.createElement("template");
         templateElement.innerHTML = this.template();
+        this.bindEvents(templateElement.content);
         this.parent.append(templateElement.content);
     }
 }
