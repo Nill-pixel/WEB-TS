@@ -581,9 +581,11 @@ const user = (0, _user.User).buildUser({
     name: "Nill",
     age: 21
 });
-const div = document.getElementById("root");
-const userForm = new (0, _userForm.UserForm)(div, user);
-userForm.render();
+const root = document.getElementById("root");
+if (root) {
+    const userForm = new (0, _userForm.UserForm)(root, user);
+    userForm.render();
+} else throw new Error("Element Root not found");
 
 },{"./models/User":"4rcHn","./views/UserForm":"gXSLD"}],"4rcHn":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -5137,6 +5139,15 @@ class UserForm {
         this.onSetAgeClick = ()=>{
             this.model.setRandomAge();
         };
+        this.onSetNameClick = ()=>{
+            const input = this.parent.querySelector("input");
+            if (input) {
+                const name = input.value;
+                this.model.set({
+                    name
+                });
+            }
+        };
         this.bindModel();
     }
     bindModel() {
@@ -5146,7 +5157,8 @@ class UserForm {
     }
     eventsMap() {
         return {
-            "click:.set-age": this.onSetAgeClick
+            "click:.set-age": this.onSetAgeClick,
+            "click:.set-name": this.onSetNameClick
         };
     }
     template() {
@@ -5156,7 +5168,7 @@ class UserForm {
         <div>User name: ${this.model.get("name")}</div>
         <div>User age: ${this.model.get("age")}</div>
         <input />
-        <button>Click me</button>
+        <button class="set-name">Change Name</button>
         <button class="set-age">Set Random Age</button>
         </div>`;
     }
