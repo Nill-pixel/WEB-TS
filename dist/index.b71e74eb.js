@@ -576,6 +576,7 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 
 },{}],"h7u1C":[function(require,module,exports) {
 var _user = require("./models/User");
+// HEAD
 var _userEdit = require("./views/UserEdit");
 const user = (0, _user.User).buildUser({
     name: "Nill",
@@ -586,6 +587,13 @@ if (root) {
     const userEdit = new (0, _userEdit.UserEdit)(root, user);
     userEdit.render();
 } else throw new Error("Element Root not found");
+//
+const colletion = (0, _user.User).buildUserColletion();
+colletion.on("change", ()=>{
+    console.log(colletion);
+});
+colletion.fetch() //parent of 8dfdcc7 (main)
+;
 
 },{"./models/User":"4rcHn","./views/UserEdit":"3CihC"}],"4rcHn":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
